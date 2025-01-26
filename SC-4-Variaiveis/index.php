@@ -100,6 +100,107 @@
     echo $nome2;
     echo "<br>";
     
+    echo "<h2>Escopo Local</h2>";
+
+    $x = 10;
+
+    echo "$x global <br>";
+
+    function teste() {
+        $x = 5;
+        echo "$x local <br>";
+
+    }
+
+    teste();
+    echo "$x global <br>";
+    teste();
+    
+    function testando() {
+        $x = 12;
+        echo "$x local <br>";
+    }
+
+    testando();
+    teste();
+    $x = 99;
+    echo "$x global <br>";
+
+    echo "<h2>Escopo Global</h2>";
+
+    $teste = "asd";
+
+    echo "$teste global 1 <br>";
+
+    if(5 > 2){
+
+        $teste = "dsa";
+        echo "$teste if <br>";
+
+    }
+
+    echo "$teste global 2 <br>";
+
+    function funcao() {
+        
+        $teste = "xsxs";
+        echo "$teste global 1 <br>";
+    }
+
+    funcao();
+
+    function testandoGlobal(){
+
+        global $teste;
+        $teste = 2;
+        echo "$teste global função <br>";
+
+    }
+
+    testandoGlobal();
+
+    echo "$teste global 3 <br>";
+
+    echo "<h2>Variavel Static</h2>";
+
+    function testeStatic() {
+
+        $a = 0;
+        $a++;
+        echo "$a <br>";
+
+    }
+
+    testeStatic();
+    testeStatic();
+    testeStatic();
+    
+    function testeStatic2() {
+
+        static $a = 0;
+        $a++;
+        echo "$a <br>";
+
+    }
+    
+    testeStatic2();
+    testeStatic2();
+    testeStatic2();
+
+    echo "<h2>Parâmetros de função</h2>";
+    
+    function soma($a, $b){
+
+        echo $a + $b;
+        echo "<br>";
+
+    }
+
+    soma(2, 4);
+    soma(6, 8);
+    soma(10, 10);
+
+    
     echo "<br><a href='http://localhost/curso_php/SC-3-TiposDados/'>Voltar</a> ";
 
 
