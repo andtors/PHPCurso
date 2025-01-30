@@ -397,12 +397,19 @@
 
     $url2 = "https://www.horadecodar.com.br/?busca=php";
     $arrayUrl2 = parse_url($url2);
+
     echo "<br>";
+    
     print_r($arrayUrl2);
     echo "<br>";
+
     $url3 = "https://www.horadecodar.com.br/usuarios/matheusbattisti?id=12&nome=Matheus";
     $arrayUrl3 = parse_url($url3);
+
     echo "<br>";
+    
     print_r($arrayUrl3);
+    
     echo "<br>";
+    
     echo "<br><a href='http://localhost/curso_php/'>Voltar</a> ";
