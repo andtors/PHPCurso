@@ -362,5 +362,405 @@
     print_r($removidoEx4);
     echo "<br>";
     
+    echo "<h2> Criando variaveis com extract </h2>";
+
+    $arrExt = [
+        "cor" => "vermelho",
+        "forma" => "retangular",
+        "material" => "aço"
+    ];
+
+    extract($arrExt);
+
+    echo $cor . "<br>";
+    echo $forma . "<br>";
+    echo $material . "<br>";
+
+    $nomeExt = "Matheus";
+
+    $pessoaExt = [
+        "nomeExt" => "João",
+        "idade" => 29
+    ];
+
+    echo "$nomeExt <br>";
+
+    extract($pessoaExt);
+
+    echo "$nomeExt <br>";
+    echo "$idade <br>";
+
+    echo "<h2> Criando array com compact </h2>";
+
+    $marcaComp = "BMW";
+    $motoComp = "3.0";
+    $tetoSolarComp = true;
+    $portasComp = 4;
+
+    $carroComp = compact("marcaComp", "motoComp", "tetoSolarComp", "portasComp");
+
+    print_r($carroComp);
+
+    echo "<h2> Exercicio 5 </h2>";
+
+    $gpu = "3060ti";
+    $cpu = "Ryzen 3600";
+    $mem = 16.00;
+    $placaM = "LegendSteel350m";
+
+    $computador = compact("gpu", "cpu", "mem", "placaM");
+
+    foreach($computador as $caractec => $peca){
+
+        echo "$caractec: $peca <br>";
+
+    }
+
+    echo "<h2> Foreach e arrays </h2>";
+
+    $pessoaFE1 = [
+        "nome" => "Matheus",
+        "idade" => 29,
+        "profissao" => "Programador"
+    ];
+    
+    $pessoaFE2 = [
+        "nome" => "Alexia",
+        "idade" => 25,
+        "profissao" => "Eng. Civil"
+    ];
+
+    foreach($pessoaFE1 as $carac => $value){
+
+        echo "$carac => $value <br>";
+
+    }
+
+    foreach($pessoaFE2 as $carac => $value){
+
+        echo "$carac => $value <br>";
+
+    }
+
+    echo "<h2> Exercicio 6 </h2>";
+
+    $arrEx6 = [
+
+      "Matheus" => 29,
+      "Alexia" => 25,
+      "Pedro" => 24,
+      "João" => 43
+
+    ];
+
+    ?>
+    
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+        </tr>
+        <?php foreach($arrEx6 as $nome => $idade): ?>
+        <tr>
+            <td><?= $nome; ?></td>
+            <td><?= $idade; ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>   
+  <?php
+
+    echo "<h2> Reduce em arrays </h2>";
+
+    $arrReduce = [1, 2, 4, 19, 234, 12, 34, 5, 12];
+
+    function soma($a, $b){
+
+        return $a + $b;
+
+    }
+
+    function subtracao($a, $b){
+
+        return $a - $b;
+
+    }
+
+    $resultado = array_reduce($arrReduce, "soma");
+
+    echo "$resultado <br>";
+
+    $resultado2 = array_reduce($arrReduce, "subtracao");
+
+    echo "$resultado2 <br>";
+
+    echo "<h2> Buscando em arrays </h2>";
+
+    $arrI = ["banana", "maça", "batata", "pera", "mamão"];
+
+    if(in_array("batata", $arrI)){
+
+        echo "Há o item batata na array<br>";
+
+    } else {
+
+        echo "Não há o item batata na array<br>";
+
+    }
+
+    $bana = "banana";
+
+    if(in_array($bana, $arrI)){
+
+        echo "Há o item banana na array<br>";
+
+    } else {
+
+        echo "Não há o item banana na array<br>";
+
+    }
+
+    if(in_array("teste", $arrI)){
+
+        echo "Há o item teste na array<br>";
+
+    } else {
+
+        echo "Não há o item teste na array<br>";
+
+    }
+
+    echo "<h2> Ordenação de arrays </h2>";
+
+    $arrOrd = [2, 1, 334, 32, 123, 65, 38, 9999, 12, 4];
+
+    sort($arrOrd);
+
+    print_r($arrOrd);
+    echo "<br>";
+
+    $arrOrd2 = [2, 1, 334, 32, 123, 65, 38, 9999, 12, 4];
+
+    rsort($arrOrd2);
+
+    print_r($arrOrd2);
+    echo "<br>";
+
+    $nomesOrd = ["Maria", "Aaron", "João", "José", "Matheus"];
+
+    sort($nomesOrd);
+
+    print_r($nomesOrd);
+    echo "<br>";
+
+    echo "<h2> Ordenação de arrays associativos </h2>";
+
+    $arrAssoOrd = [
+        "Matheus" => 29,
+        "Pedro" => 18,
+        "Joaquim" => 14,
+        "Maria" => 12
+    ];
+
+    asort($arrAssoOrd);
+    print_r($arrAssoOrd);
+    echo "<br>";
+
+    $arrAssoOrd2 = [
+        "Matheus" => 12,
+        "Pedro" => 44,
+        "Joaquim" => 14,
+        "Maria" => 32
+    ];
+
+    arsort($arrAssoOrd2);
+    print_r($arrAssoOrd2);
+    echo "<br>";
+
+    ksort($arrAssoOrd2);
+    print_r($arrAssoOrd2);
+    echo "<br>";
+
+    krsort($arrAssoOrd2);
+    print_r($arrAssoOrd2);
+    echo "<br>";
+
+    echo "<h2> Exercicio 7 </h2>";
+
+    $arrEx7 = [
+
+        "Andre" => 24.0,
+        "Matheus" => 29.0,
+        "Maria" => 12.0,
+        "Marcelo" => 54.0,
+        "Cauan" => 30.0
+
+    ];
+
+    arsort($arrEx7);
+    ?>
+    
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+        </tr>
+        <?php foreach($arrEx7 as $nome => $idade): ?>
+        <tr>
+            <td><?= $nome; ?></td>
+            <td><?= $idade; ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>   
+  <?php
+
+    echo "<h2> Invertendo arrays  </h2>";
+
+    $arrR = range(1, 5);
+
+    $arrRev = array_reverse($arrR);
+
+    print_r($arrR);
+    echo "<br>";
+
+    print_r($arrRev);
+    echo "<br>";
+
+    $nomeR = ["Matheus", 12, true, [1, 2]];
+
+    $arr2Rev = array_reverse($nomeR);
+
+    print_r($arr2Rev);
+    echo "<br>";
+
+    echo "<h2> Ordem aléatoria de itens </h2>";
+
+    $arrAle = range(1, 20);
+
+    shuffle($arrAle);
+    print_r($arrAle);
+    echo "<br>";
+    shuffle($arrAle);
+    print_r($arrAle);
+    echo "<br>";
+
+    echo "<h2> Somando itens de um array  </h2>";
+
+    $arrSum = [2, 4, 34, 34.1, 324, 12, 34, 1, "soma"];
+
+    $soma = array_sum($arrSum);
+
+    print_r($arrSum);
+    echo "<br>";
+    echo "$soma <br>";
+    
+    echo "<h2> Unindo arrays </h2>";
+
+    $arrUn1 = [1, 2, 3];
+    $arrUn2 = [10, 40, 90];
+    $arrUn3 = [2.1, 44.5, 43.3];
+    $arrUn4 = ["asd", "as", "a"];
+
+    $arrMerge = array_merge($arrUn1, $arrUn2, $arrUn3, $arrUn4, [0, 1]);
+
+    print_r($arrMerge);
+    echo "<br>";
+
+    echo "<h2> Diferença entre arrays </h2>";
+
+    $arrDif1 = [1, 2, 3];
+    $arrDif2 = [2, 4, 6];
+
+    $diff = array_diff($arrDif1, $arrDif2);
+    
+    print_r($diff);
+    echo "<br>";
+
+    $diff2 = array_diff($arrDif2, $arrDif1);
+    
+    print_r($diff2);
+    echo "<br>";
+
+    $arrDif3 = [4];
+
+    $diff3 = array_diff($arrDif2, $arrDif1, $arrDif3);
+    
+    print_r($diff3);
+    echo "<br>";
+
+    echo "<h2> Exercicio 8 </h2>";
+
+
+    function somaElementos($arr){
+        
+        echo array_sum($arr);
+
+    }
+
+    somaElementos([1,3,5,7,8,9]);
+
+    echo "<h2> Exercicio 9 </h2>";
+
+    function maiorElemento($arr){
+
+        $maxValue = 0;
+
+        foreach($arr as $elemento){
+
+            if($elemento > $maxValue){
+
+                $maxValue = $elemento;
+                continue;
+
+            } else {
+
+                continue;
+
+            }
+
+        }
+
+        echo $maxValue;
+    }
+
+    maiorElemento([10, 2352, 123, 345, 231, 624]);
+
+    echo "<h2> Exercicio 10 </h2>";
+
+    function encontrarPares($arr){
+
+        $arrayPares = [];
+
+        foreach($arr as $elemento){
+
+            if($elemento % 2 == 0){
+
+                array_push($arrayPares, $elemento);
+                continue;
+                
+            } else {
+
+                continue;
+                
+            }
+        }
+
+        print_r($arrayPares);
+
+    }
+
+    encontrarPares([12, 235, 123081, 17231, 1224, 1239716]);
+
+    echo "<h2> Exercicio 11 </h2>";
+
+    function ordenarNumeros($arr){
+
+        arsort($arr);
+        print_r($arr);
+
+    }
+
+    ordenarNumeros([1, 23, 4, 12, 6236, 3, 4252]);
 
     echo "<br><a href='http://localhost/curso_php/'>Voltar</a> ";
+
+    
