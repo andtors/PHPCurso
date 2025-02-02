@@ -14,6 +14,8 @@ main {
     margin-bottom: 250px;
 }
 
+
+
 /* navbar */
 #logo {
     position: absolute;
@@ -196,6 +198,7 @@ main {
     color: #000;
 }
 
+
 /* Mobile */
 
 @media(max-widht: 480px){
@@ -243,6 +246,8 @@ main {
         width: 100%;
     }
 }
+
+
 
 
 /* FOOTER */
