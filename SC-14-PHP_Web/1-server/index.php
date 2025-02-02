@@ -15,5 +15,4 @@
 
    }
 
-
    echo "<br><a href='http://localhost/curso_php/SC-14-PHP_Web'>Voltar</a> ";
