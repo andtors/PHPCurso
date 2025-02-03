@@ -1,0 +1,107 @@
+-- Criar Banco
+
+CREATE DATABASE CURSO_PHP;
+
+-- Criar tabela;
+
+CREATE TABLE PESSOAS(
+    nome VARCHAR(100),
+    idade INT
+);
+
+-- Deletando Banco e tabela
+
+DROP DATABASE CURSO_PHP;
+
+DROP TABLE PESSOAS;
+
+-- Alterando tabelas
+
+ALTER TABLE PESSOAS
+MODIFY COLUMN NOME TEXT;
+
+ALTER TABLE PESSOAS
+MODIFY COLUMN NOME VARCHAR(255);
+
+ALTER TABLE PESSOAS
+ADD COLUMN IDADE INT;
+
+-- Constraint e primary key
+
+CREATE TABLE PESSOA(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE
+);
+
+-- Adicionando dados
+
+INSERT INTO PESSOA (nome, email) VALUES ("André", "andre@email.com");
+-- INSERT INTO PESSOA VALUES ("Bia", "bia@email.com");
+INSERT INTO PESSOA VALUES (NULL, "Rubens", "rubens@email.com");
+INSERT INTO PESSOA VALUES (NULL, "Paula", "paula@email.com");
+INSERT INTO PESSOA VALUES (NULL, "Teste", "teste@email.com");
+
+-- Selecionando dados
+
+SELECT * FROM PESSOA;
+SELECT nome FROM PESSOA;
+
+-- Utilizando o where
+
+SELECT * FROM PESSOA
+WHERE nome = "André";
+
+SELECT nome FROM PESSOA
+WHERE ID > 1;
+
+-- Utilizando condicionais
+
+SELECT ID, NOME, IDADE FROM PESSOA
+WHERE ID > 1 
+AND
+IDADE > 30;
+
+SELECT ID, NOME, IDADE FROM PESSOA
+WHERE ID = 1 
+OR
+IDADE > 59;
+
+-- Ordenando os dados
+
+SELECT NOME, IDADE FROM PESSOA
+ORDER BY IDADE ASC; 
+
+SELECT NOME, IDADE FROM PESSOA
+ORDER BY IDADE DESC; 
+
+SELECT NOME, IDADE FROM PESSOA
+ORDER BY IDADE ASC; 
+
+SELECT NOME, IDADE FROM PESSOA
+ORDER BY IDADE DESC; 
+
+-- Atualizando dados
+
+UPDATE PESSOA
+SET NOME = "Beatriz"
+WHERE ID = 2;
+
+UPDATE PESSOA
+SET EMAIL = "beatriz@gmail.com"
+WHERE ID = 2;
+
+-- DELETANDO DADOS
+
+DELETE FROM PESSOA
+WHERE NOME = "Teste";
+
+-- Criando usuario
+
+SELECT * FROM mysql_user;
+
+CREATE USER 'teste'@'localhost' IDENTIFED BY "teste123";
+GRANT ALL PRIVILEGES ON *.* TO 'andre'@'localhost';
+FLUSH PRIVILEGES;
+
+
