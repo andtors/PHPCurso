@@ -26,18 +26,30 @@
     </div>
     <input type="submit" value="Salvar">
 </form>
-<ul>
-    <?php foreach($cars as $car): ?>
-        <li>
-            <?= $car->getBrand() ?> <?= $car->getKm() ?> <?= $car->getColor() ?> 
-            || 
-            <a href="<?= $BASE_URL ?>edit.php?id=<?= $car->getId() ?>">Editar</a> 
-            || 
-            <form action="process.php" method="POST">
-                <input type="hidden" name="type" value="delete">
-                <input type="hidden" name="id" value="<?= $car->getId() ?>">
-                <button>Deletar</button>
-            </form>
-        </li>
-    <?php endforeach; ?>
-</ul>
+    <table>
+    <tdead>
+        <tr>
+            <td>Marca</td>
+            <td>KM</td>
+            <td>Cor</td>
+            <td>Ações</td>
+        </tr>
+    </tdead>
+    <tbody>
+            <?php foreach($cars as $car): ?>
+                <tr>
+                    <td><?= $car->getBrand() ?></td>
+                    <td><?= $car->getKm() ?></td>
+                    <td><?= $car->getColor() ?></td>
+                    <td><a href="<?= $BASE_URL ?>edit.php?id=<?= $car->getId() ?>">Editar</a> 
+                        <form action="process.php" method="POST">
+                            <input type="hidden" name="type" value="delete">
+                            <input type="hidden" name="id" value="<?= $car->getId() ?>">
+                            <button>Deletar</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        
+    </tbody>
+</table>
