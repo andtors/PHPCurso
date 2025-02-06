@@ -1,26 +1,25 @@
 <?php
 
-    require_once("models/Message.php");
-    require_once("globals.php");
-    require_once("db.php");
-    require_once("dao/UserDAO.php");
+  require_once("db.php");
+  require_once("globals.php");
+  require_once("models/Message.php");
+  require_once("dao/UserDAO.php");
 
-    $message = new Message($BASE_URL);
+  $message = new Message($BASE_URL);
 
-    $flashMessage = $message->getMessage();
+  $flashMessage = $message->getMessage();
 
-    if(!empty($flashMessage["msg"])){
-      $message->clearMessage(); 
-    }
+  if(!empty($flashMessage["msg"])) {
 
-    $userDAO = new UserDAO($conn, $BASE_URL);
+    $message->clearMessage();
 
-    $userData = $userDAO->verifyToken(false);
+  }
 
-    print_r($_SESSION)
+  $userDao = new UserDAO($conn, $BASE_URL);
+
+  $userData = $userDao->verifyToken(false);
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +35,7 @@
   <link rel="stylesheet" href="<?= $BASE_URL ?>css/styles.css">
 </head>
 <body>
-<header>
+  <header>
     <nav id="main-navbar" class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="<?= $BASE_URL ?>">
             <img id="logo" src="<?= $BASE_URL ?>img/logo.svg" alt="MovieStar">
@@ -74,13 +73,9 @@
             </ul>
           </div>
       </nav>
-      
   </header>
-
-  <?php if(!empty($flashMessage['msg'])): ?>
-
+  <?php if(!empty($flashMessage["msg"])): ?>
     <div class="msg-container">
-        <p class="msg <?= $flashMessage['type'] ?>"><?= $flashMessage["msg"] ?></p>
+      <p class="msg <?= $flashMessage["type"] ?>"><?= $flashMessage["msg"] ?></p>
     </div>
-
   <?php endif; ?>

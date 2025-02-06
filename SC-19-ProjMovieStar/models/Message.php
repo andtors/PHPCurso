@@ -1,16 +1,22 @@
 <?php
+    session_start();
 
     class Message {
+
         private $url;
 
         public function __construct($url){
             $this->url = $url;
         }
 
-        public function setMessages($msg, $type, $redirect = "index.php"){
+       
+
+        public function setMessage($msg, $type, $redirect = ""){
+
+            
 
             $_SESSION['msg'] = $msg;
-            $_SESSION['type'] = $msg;
+            $_SESSION['type'] = $type;
 
             if($redirect != "back"){
 
@@ -24,13 +30,24 @@
 
         }
 
-        public function getMessages(){
+        public function getMessage(){
+
+            if(!empty($_SESSION["msg"])){
+                
+                return [
+                    "msg" => $_SESSION['msg'],
+                    "type" => $_SESSION['type']
+                ];
+            } else {
+               return false;
+            }
 
         }
 
         
-        public function clearMessages(){
-
+        public function clearMessage(){
+            $_SESSION['msg'] = "";
+            $_SESSION['type'] = "";
 
         }
     }
