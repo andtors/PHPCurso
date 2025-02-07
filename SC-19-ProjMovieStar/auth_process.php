@@ -29,7 +29,6 @@
             if($password ===  $confirmpassword){
 
                 // Verificar se o e-mail já esta cadastrado
-
                 if($userDAO->findByEmail($email) === false) {
 
                     $user = new User();
@@ -71,7 +70,21 @@
 
     } else if($type === "login") {
 
+        $email = filter_input(INPUT_POST, "email");
+        $password = filter_input(INPUT_POST, "password");
+
+        // Tenta autenticar o usuario
+        if($userDAO->authenticateUser($email, $password)){
+
+            $message->setMessage("Seja bem-vindo.", "success", "editprofile.php");
+
+        // Redireciona o usuario caso de errado
+        } else {
+            $message->setMessage("Usuario e/ou senha incorretas.", "error", "auth.php");
+        }
         
+    } else {
+            $message->setMessage("Informações inválidas.", "error", "auth.php");
     }
     
 

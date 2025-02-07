@@ -17,8 +17,6 @@
 
     $userData = $userDAO->verifyToken(false);
 
-    print_r($_SESSION)
-
 ?>
 
 <!DOCTYPE html>
