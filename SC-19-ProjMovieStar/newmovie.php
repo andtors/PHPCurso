@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="length">Duração:</label>
-                    <input type="text" class="form-control" id="lenght" name="lenght" placeholder="Adicione a duração do filme">
+                    <input type="text" class="form-control" id="length" name="length" placeholder="Adicione a duração do filme">
                 </div>
                 <div class="form-group">
                     <label for="category">Categoria:</label>
