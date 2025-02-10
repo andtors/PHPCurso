@@ -26,6 +26,8 @@
 
         public function getMovieByCategory($category);
 
+        public function getMoviesByUserId($id);
+
         public function getMovieById($id);
         
         public function findById($id);

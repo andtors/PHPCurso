@@ -85,7 +85,7 @@
     color: #FFF;
 }
 
-/* HOME */
+/* Home */
 #main-container {
     background-color: #000;
     color: #fff;
@@ -93,6 +93,76 @@
     padding: 40px;
 }
 
+.section-title{
+    font-size: 24px;
+    border-left: 4px solid #F5C518;
+    padding-left: 12px;
+    margin-top: 20px;
+}
+
+.section-description {
+    color: #ccc;
+    font-size: 18px;
+}
+
+.movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.movie-card {
+    background-color: #1A1A1A;
+    width: 18%;
+    margin-bottom: 30px;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.movie-card .card-img-top{
+    height: 300px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-title {
+    height: 3rem;
+}
+
+.card-title a {
+    font-size: 16px;
+    color: #fff;
+}
+
+.fas.fa-star {
+    color: #F5C518;
+}
+
+.rating {
+    color: #ccc;
+}
+
+.rate-btn {
+    margin-bottom: 15px;
+    color: #5799ef;
+    background-color: #333;
+    border-color: #333;
+    width: 100%;
+    font-weight: bold;
+}
+
+.rate-btn:hover {
+    background-color: #444;
+    border-color: #444;
+}
+
+.empty-list {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+}
 /* Auth */
 
 #auth-row {
@@ -154,7 +224,8 @@
     margin-top: 30px;
 }
 
-.edit-profile-page .card-btn {
+.edit-profile-page .card-btn,
+#add-movie-container .card-btn {
     width: auto;
 }
 
@@ -182,6 +253,76 @@
     margin: 0 auto;
     padding-top: 7px;
 }
+
+/* Dashboard */
+#add-movie-container {
+    text-align: right;
+}
+
+#movies-dashboard .table {
+    color: #fff;
+}
+
+#movies-dashboard .table th {
+    border-top: none;
+}
+
+#movies-dashboard .table tr {
+    padding: 15px 0;
+}
+
+.table-movie-title{
+    color: #fff;
+    font-weight: bold;
+    transition: .5s;
+}
+
+.table-movie-title:hover{
+    color: #f5c518;
+}
+
+.actions-column{
+    max-width: 75px;
+    text-align: center;
+}
+
+
+.actions-column form {
+    display: inline-block;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 5px 10px;
+    border-radius: 5%;
+    margin: 0 5px;
+    font-weight: bold;
+    transition: .5s;
+    border: none;
+}
+
+.edit-btn {
+    background-color: #0DCAF0;
+    color: #fff;
+}
+
+.edit-btn:hover {
+    background-color: transparent;
+    color: #0DCAF0;
+    text-decoration: none;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.delete-btn:hover {
+    background-color: transparent;
+    color: #dc3545;
+    text-decoration: none;
+}
+
 
 /* Footer */
 
