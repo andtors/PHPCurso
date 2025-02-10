@@ -29,7 +29,7 @@
                          placeholder="Digite seu nome" value="<?= $userData->name ?>">
                     </div>
                     <div class="form-group">
-                        <label for="lastname">Nome:</label>
+                        <label for="lastname">Sobrenome:</label>
                         <input type="text" class="form-control" id="lastname" name="lastname"
                          placeholder="Digite seu nome" value="<?= $userData->lastname ?>">
                     </div>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="form-group">
                         <label for="bio">Sobre você:</label>
-                        <textarea class="form-control" name="bio" id="bio" rows="5" placeholder="Conte quem você é, o que faz e onde trabalha..."><?= $userData->bio ?>'</textarea>
+                        <textarea class="form-control" name="bio" id="bio" rows="5" placeholder="Conte quem você é, o que faz e onde trabalha..."><?= $userData->bio ?></textarea>
                     </div>
                 </div>
             </div>

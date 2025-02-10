@@ -3,6 +3,8 @@
     require_once("models/Movie.php");
     require_once("models/Message.php");
 
+    require_once("dao/ReviewDAO.php");
+
     // Review DAO
 
     class MovieDAO implements MovieDAOInterface {
@@ -31,6 +33,13 @@
             $movie->category = $data['category'];
             $movie->length = $data['length'];
             $movie->users_id = $data['users_id'];
+
+            // Recebe as ratings dos filmes
+            $reviewDAO = new ReviewDAO($this->conn, $this->url);
+            
+            $rating = $reviewDAO->getRatings($movie->id);
+
+            $movie->rating = $rating;
             
             return $movie;
 
@@ -105,15 +114,47 @@
         }
 
         public function getMovieById($id){
-            
-        }
-        
-        public function findById($id){
-            
+
+            $stmt = $this->conn->prepare("SELECT * FROM movies 
+                                          WHERE id = :id");
+
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0){
+
+                $movieData = $stmt->fetch();
+
+                $movie = $this->buildMovie($movieData);
+
+                return $movie;
+
+            } else {
+                return false;
+            }
         }
 
         public function findByTitle($title){
-            
+            $movies = [];
+
+            $stmt = $this->conn->prepare("SELECT * FROM movies 
+                                          WHERE title LIKE :title");
+
+            $stmt->bindValue(":title", "%".$title."%");
+
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0){
+
+                $moviesArray = $stmt->fetchAll();
+
+                foreach($moviesArray as $movie){
+                    $movies[] = $this->buildMovie($movie);
+                }
+            }
+
+            return $movies;
         }
 
         public function create(Movie $movie){
@@ -140,9 +181,38 @@
 
         public function update(Movie $movie){
             
+            $stmt = $this->conn->prepare("UPDATE movies SET
+                title = :title,
+                description = :description,
+                image = :image,
+                category = :category,
+                trailer = :trailer,
+                length = :length
+                WHERE id = :id
+            ");
+
+            $stmt->bindParam(":title", $movie->title);
+            $stmt->bindParam(":description", $movie->description);
+            $stmt->bindParam(":image", $movie->image);
+            $stmt->bindParam(":category", $movie->category);
+            $stmt->bindParam(":trailer", $movie->trailer);
+            $stmt->bindParam(":length", $movie->length);
+            $stmt->bindParam(":id", $movie->id);
+
+            $stmt->execute();
+
+            $this->message->setMessage("Filme atualizado com sucesso.", "success", "index.php");
+
         }
 
         public function destroy($id){
             
+            $stmt = $this->conn->prepare("DELETE FROM movies WHERE id = :id");
+
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+            $this->message->setMessage("Filme deletado com sucesso.", "success", "dashboard.php");
         }
     }
